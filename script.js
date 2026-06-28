@@ -1,106 +1,296 @@
-// Pages
-const page1 = document.getElementById("page1");
-const page2 = document.getElementById("page2");
-const page3 = document.getElementById("page3");
-const page4 = document.getElementById("page4");
-const page5 = document.getElementById("page5");
+// ---------- Pages ----------
 
-// Buttons
-const startBtn = document.getElementById("startBtn");
-const next1 = document.getElementById("next1");
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
+const pages = document.querySelectorAll(".page");
 
-// Letter
-const letter = document.getElementById("letter");
+function showPage(id){
 
-// Open surprise
-startBtn.addEventListener("click", () => {
+    pages.forEach(page=>{
 
-    page1.style.display = "none";
-    page2.style.display = "block";
+        page.classList.remove("active");
+
+    });
+
+    document.getElementById(id).classList.add("active");
+
+}
+
+
+
+// ---------- Elements ----------
+
+const startBtn=document.getElementById("startBtn");
+
+const nicknameBtn=document.getElementById("nicknameBtn");
+
+const yesBtn=document.getElementById("yesBtn");
+
+const noBtn=document.getElementById("noBtn");
+
+const nextBtn=document.getElementById("nextBtn");
+
+const finishBtn=document.getElementById("finishBtn");
+
+const popup=document.getElementById("popup");
+
+const closePopup=document.getElementById("closePopup");
+
+const correctAnswer=document.getElementById("correctAnswer");
+
+const letterBox=document.getElementById("letterBox");
+
+
+
+// ---------- Landing ----------
+
+startBtn.onclick=()=>{
+
+    showPage("page2");
+
+};
+
+
+
+// ---------- Nickname Question ----------
+
+nicknameBtn.onclick=()=>{
+
+    if(correctAnswer.checked){
+
+        showPage("page3");
+
+    }
+
+    else{
+
+        popup.style.display="flex";
+
+    }
+
+};
+
+closePopup.onclick=()=>{
+
+    popup.style.display="none";
+
+};
+
+
+
+// ---------- Moving No Button ----------
+
+let clickCount=0;
+
+noBtn.addEventListener("mouseenter",()=>{
+
+    let x=Math.random()*250-125;
+
+    let y=Math.random()*160-80;
+
+    noBtn.style.transform=`translate(${x}px,${y}px)`;
 
 });
 
-// Nickname validation
-next1.addEventListener("click", () => {
+noBtn.addEventListener("click",()=>{
 
-    if(document.getElementById("correctAnswer").checked){
+    clickCount++;
 
-        page2.style.display = "none";
-        page3.style.display = "block";
+    if(clickCount>=3){
 
-    }else{
-
-        alert("😂 Ae bhakol, sahi option choose karo.");
+        alert("🥺 Itni bhi kya narazgi hai babu...");
 
     }
 
 });
 
-// Yes button
-yesBtn.addEventListener("click", () => {
 
-    page3.style.display = "none";
-    page4.style.display = "block";
+
+// ---------- Yes Button ----------
+
+yesBtn.onclick=()=>{
+
+    showPage("page4");
+
+    startTyping();
+
+};
+
+
+
+// ---------- Letter ----------
+
+const message=`My baby,
+
+I am extremely sorry my love.
+
+Ahan baccha chi humar.
+
+Please maaf k di ye beta hmar.
+
+Bewkuf hai prr hai toh aapke hi bauwa.
+
+Naadaan hai thode jada...
+
+Par hai toh aapke hi babu n ❤️
+
+Hmar praan...
+
+Sorry beta ❤️`;
+
+let index=0;
+
+function startTyping(){
+
+    letterBox.innerHTML="";
+
+    nextBtn.style.display="none";
+
+    index=0;
 
     typeLetter();
 
-});
-
-// No button
-noBtn.addEventListener("mouseover", () => {
-
-    const x = Math.random() * 250 - 125;
-    const y = Math.random() * 150 - 75;
-
-    noBtn.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-});
-
-// Typewriter Effect
-const message = `Dear Bubu...
-
-Thank you for being my safe place.
-
-Thank you for tolerating my stupidity.
-
-I'm really sorry if I've ever hurt you.
-
-I promise to annoy you forever.
-
-Because life without you would never feel complete.
-
-I love you ❤️`;
-
-let index = 0;
+}
 
 function typeLetter(){
 
-    letter.innerHTML = "";
+    if(index<message.length){
 
-    index = 0;
-
-    const interval = setInterval(() => {
-
-        letter.innerHTML += message.charAt(index);
+        letterBox.innerHTML+=message.charAt(index);
 
         index++;
 
-        if(index >= message.length){
+        setTimeout(typeLetter,35);
 
-            clearInterval(interval);
+    }
 
-            setTimeout(() => {
+    else{
 
-                page4.style.display = "none";
-                page5.style.display = "block";
+        nextBtn.style.display="inline-block";
 
-            },2500);
-
-        }
-
-    },40);
+    }
 
 }
+// ---------- Next Button ----------
+
+nextBtn.onclick = () => {
+
+    showPage("page5");
+
+};
+
+
+// ---------- Finish Button ----------
+
+finishBtn.onclick = () => {
+
+    showPage("page6");
+
+    launchConfetti();
+
+};
+
+
+
+// ---------- Floating Hearts ----------
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.position = "fixed";
+
+    heart.style.left = Math.random()*100 + "vw";
+
+    heart.style.top = "100vh";
+
+    heart.style.fontSize = (20 + Math.random()*20) + "px";
+
+    heart.style.pointerEvents = "none";
+
+    heart.style.opacity = Math.random();
+
+    heart.style.transition = "transform 6s linear, opacity 6s linear";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.style.transform = "translateY(-120vh)";
+
+        heart.style.opacity = "0";
+
+    },100);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },6200);
+
+}
+
+setInterval(createHeart,600);
+
+
+
+// ---------- Confetti ----------
+
+function launchConfetti(){
+
+    for(let i=0;i<120;i++){
+
+        const piece=document.createElement("div");
+
+        piece.style.position="fixed";
+
+        piece.style.width="8px";
+
+        piece.style.height="12px";
+
+        piece.style.left=Math.random()*100+"vw";
+
+        piece.style.top="-20px";
+
+        piece.style.background=
+
+        `hsl(${Math.random()*360},90%,60%)`;
+
+        piece.style.pointerEvents="none";
+
+        piece.style.transition="transform 4s linear";
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+
+            piece.style.transform=
+
+            `translateY(${window.innerHeight+80}px)
+             rotate(${Math.random()*720}deg)`;
+
+        },50);
+
+        setTimeout(()=>{
+
+            piece.remove();
+
+        },4500);
+
+    }
+
+}
+
+
+
+// ---------- Small Welcome Message ----------
+
+window.onload=()=>{
+
+    setTimeout(()=>{
+
+        console.log("Website Loaded ❤️");
+
+    },300);
+
+};
