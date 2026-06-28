@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,104 +13,187 @@
 
 <div class="container">
 
-    <!-- Screen 1 -->
-    <div id="page1" class="page">
+    <!-- PAGE 1 -->
+
+    <div id="page1" class="page active">
 
         <h1>❤️ A Little Surprise ❤️</h1>
 
-        <h2>Made only for my beautiful girl 🥺</h2>
+        <h2>Made especially for my beautiful Bubu 🥺</h2>
 
         <p>
-            This website has only one purpose...
+            Before you continue...
             <br><br>
-            To make my Bubu smile today ❤️
+            I made something only for you.
         </p>
 
-        <button id="startBtn">
-            Open My Surprise ❤️
-        </button>
+        <button id="startBtn">Open My Surprise ❤️</button>
 
     </div>
 
-    <!-- Screen 2 -->
-    <div id="page2" class="page" style="display:none;">
 
-        <h1>Question No. 1 ❤️</h1>
+
+    <!-- PAGE 2 -->
+
+    <div id="page2" class="page">
+
+        <h1>Question Time 💕</h1>
 
         <h2>What are the nicknames of my beautiful girlfriend?</h2>
 
-        <label><input type="checkbox"> Bubu Raani</label><br><br>
+        <div class="options">
 
-        <label><input type="checkbox"> Chunmuniya</label><br><br>
+            <label><input type="radio" name="nick"> Bubu Raani</label>
 
-        <label><input type="checkbox"> Raani Beti</label><br><br>
+            <label><input type="radio" name="nick"> Chunmuniya</label>
 
-        <label><input type="checkbox"> Gudiya</label><br><br>
+            <label><input type="radio" name="nick"> Raani Beti</label>
 
-        <label>
-            <input id="correctAnswer" type="checkbox">
-            All of these ❤️
-        </label>
+            <label><input type="radio" name="nick"> Gudiya</label>
 
-        <br><br>
+            <label><input id="correctAnswer" type="radio" name="nick"> All of these ❤️</label>
 
-        <button id="next1">
-            Continue
-        </button>
+        </div>
+
+        <button id="nicknameBtn">Continue ❤️</button>
 
     </div>
 
-    <!-- Screen 3 -->
-    <div id="page3" class="page" style="display:none;">
+
+
+    <!-- PAGE 3 -->
+
+    <div id="page3" class="page">
 
         <h1>🥺</h1>
 
         <h2>I am really sorry babes...</h2>
 
-        <p>Will you forgive me?</p>
+        <p>Could you please forgive me?</p>
 
-        <button id="yesBtn">
-            ❤️ Yes, why not
-        </button>
+        <div class="btnRow">
 
-        <br><br>
+            <button id="yesBtn">❤️ Yes, why not</button>
 
-        <button id="noBtn">
-            🙄 No, never
-        </button>
+            <button id="noBtn">🙄 No, never</button>
+
+        </div>
 
     </div>
 
-    <!-- Screen 4 -->
-    <div id="page4" class="page" style="display:none;">
 
-        <h1>❤️</h1>
 
-        <p id="letter"></p>
+    <!-- PAGE 4 -->
+
+    <div id="page4" class="page">
+
+        <h1>💌</h1>
+
+        <h2>Just for You ❤️</h2>
+
+        <div id="letterBox"></div>
+
+        <button id="nextBtn">Next ❤️</button>
 
     </div>
 
-    <!-- Screen 5 -->
-    <div id="page5" class="page" style="display:none;">
+
+
+    <!-- PAGE 5 -->
+
+    <div id="page5" class="page">
 
         <h1>I Love You ❤️</h1>
 
-        <img id="couplePhoto" src="images/us.jpg" width="350">
+        <img src="images/us.jpg" id="photo">
 
-        <br><br>
+        <p class="finalMessage">
+
+            I love you so so much sona hmar ❤️
+            <br><br>
+
+            Please maaf k di ye babu...
+            <br>
+
+            Please baccha hmar...
+            <br>
+
+            Hum bahut pyar krte hai jaan aapse...
+            <br>
+
+            Bahut jda beta ❤️
+
+        </p>
+
+        <button id="finishBtn">One Last Click ❤️</button>
+
+    </div>
+
+
+
+    <!-- PAGE 6 -->
+
+    <div id="page6" class="page">
+
+        <h1>❤️ I Love You Infinity ♾️ ❤️</h1>
 
         <h2>
+
             You'll always be my Mumma ❤️
+
+            <br><br>
+
+            Mere se badi...
+
+            <br>
+
+            Dimag mein bhi...
+
+            <br>
+
+            Aur har cheez mein...
+
+            <br><br>
+
+            (Bas height wali baat accept nahi hai 😂❤️)
+
         </h2>
 
-        <p>
-            Mere se badi...<br>
-            Height mein bhi...<br>
-            Dimag mein bhi...<br>
-            Aur har cheez mein...<br><br>
+        <button onclick="location.reload()">
 
-            (Waise height wali baat nahi maanta 😂)
+            Replay Surprise ❤️
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- POPUP -->
+
+<div id="popup">
+
+    <div class="popupBox">
+
+        <h2>😂</h2>
+
+        <p>
+
+            Ae bhakol...
+
+            <br><br>
+
+            Sahi option choose karo ❤️
+
         </p>
+
+        <button id="closePopup">
+
+            Okay 😅
+
+        </button>
 
     </div>
 
@@ -119,3 +203,4 @@
 
 </body>
 </html>
+```
